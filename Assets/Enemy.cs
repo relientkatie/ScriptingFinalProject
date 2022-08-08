@@ -61,11 +61,9 @@ public void DoAlertState(){
 transform.LookAt(Target);
 AttackPlayer();
 
-
 if(dist > distanceFromPlayer){
 ChangeState(State.Idle);
-}
-}
+}}
 
 public void ChangeState(State newState)
 {
@@ -78,7 +76,6 @@ if (CurrentState == newState){
 
   public void TakeDamage(float amount){
        
-        
         health -= amount;
         if(health <= 0f){
             Die();
@@ -112,5 +109,4 @@ public void ResetAttack(){
     private void OnDrawGizmosSelected(){
     Gizmos.DrawWireSphere(transform.position, distanceFromPlayer);
     }
-
 }
