@@ -14,6 +14,7 @@ public Transform Target;
 public GameObject projectile;
 
 [Header("Enemy Stats")]
+[SerializeField] public bool FacePlayer;
 public float distanceFromPlayer;
 [SerializeField][Range(1,10)]
 public float timeBetweenAttacks = 10;
@@ -30,6 +31,7 @@ public enum State
 }
 
 public State CurrentState = State.Idle;
+
 
 private void Update(){
 
@@ -57,9 +59,11 @@ ChangeState(State.Alert);
 }}
 
 public void DoAlertState(){
-
+if(FacePlayer == true){
 transform.LookAt(Target);
+}
 AttackPlayer();
+
 
 if(dist > distanceFromPlayer){
 ChangeState(State.Idle);
